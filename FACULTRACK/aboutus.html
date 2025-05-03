@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us - FaculTrack</title>
+  <link rel="icon" type="image/png" href="/images/white.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#264653',
+            accent: '#2A9D8F',
+            background: '#F0F4F8',
+            'text-main': '#1F2937',
+            highlight: '#E9C46A',
+          },
+          fontFamily: {
+            heading: ['Poppins', 'sans-serif'],
+            body: ['Open Sans', 'sans-serif'],
+          },
+        },
+      },
+    };
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+
+<body class="font-body bg-gradient-to-br from-background via-primary to-background text-text-main min-h-screen flex flex-col">
+  <!-- Header -->
+  <header class="bg-primary text-white px-5 py-4 flex justify-between items-center relative">
+    <div class="flex items-center gap-2">
+      <img src="/images/white.png" alt="FaculTrack Logo" class="w-14" />
+      <h2 class="text-2xl font-heading font-semibold">FaculTrack</h2>
+    </div>
+
+    <!-- Hamburger -->
+    <div class="relative">
+      <div id="hamburger" class="flex flex-col justify-between w-7 h-6 cursor-pointer" onclick="toggleMenu()">
+        <div class="h-1 bg-white rounded"></div>
+        <div class="h-1 bg-white rounded"></div>
+        <div class="h-1 bg-white rounded"></div>
+      </div>
+      <!-- Dropdown Menu -->
+      <div id="dropdown" class="absolute right-0 mt-2 bg-gray-800 text-white rounded-md shadow-lg hidden z-50 w-40">
+        <a href="/index.html" class="block px-4 py-2 hover:bg-gray-700">Home</a>
+        <a href="/faculty/faclogin.php" class="block px-4 py-2 hover:bg-gray-700">FacLogin</a>
+        <a href="/admin/adminlog.php" class="block px-4 py-2 hover:bg-gray-700">AdminLogin</a>
+        <a href="/aboutus.html" class="block px-4 py-2 hover:bg-gray-700">About Us</a>
+        <a href="/contactus.html" class="block px-4 py-2 hover:bg-gray-700">Contact Us</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- About Us Section -->
+  <section class="about-section bg-cover bg-center relative text-white py-32" style="background-image: url('images/sm.jpg');">
+    <div class="absolute inset-0 bg-black opacity-50"></div>
+    <div class="relative z-10 text-center px-6">
+      <h1 class="text-4xl font-heading font-bold mb-4">About FaculTrack</h1>
+      <p class="text-lg font-body">FaculTrack simplifies academic tracking and management for institutions, helping both students and educators enhance engagement and progress.</p>
+    </div>
+  </section>
+
+  <!-- Mission and Vision Section -->
+  <section class="mission-vision flex flex-col lg:flex-row justify-around p-12 bg-white">
+    <div class="mission bg-gray-100 p-6 rounded-lg shadow-md w-full lg:w-1/3 mb-6 lg:mb-0">
+      <h3 class="text-2xl font-semibold text-center mb-4">Our Mission</h3>
+      <p class="text-lg text-center">To streamline faculty performance tracking and evaluation through efficient, user-friendly technology for educational institutions.</p>
+    </div>
+    <div class="vision bg-gray-100 p-6 rounded-lg shadow-md w-full lg:w-1/3">
+      <h3 class="text-2xl font-semibold text-center mb-4">Our Vision</h3>
+      <p class="text-lg text-center">To be the leading platform that empowers educational excellence by transforming faculty performance management.</p>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="how-it-works bg-white py-16 px-6">
+    <h2 class="text-3xl font-semibold text-center mb-10">How FaculTrack Works</h2>
+    <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+      <!-- Step 1 -->
+      <div class="bg-gray-100 p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+        <div class="text-5xl text-accent mb-4"><i class="fas fa-user-plus"></i></div>
+        <h3 class="text-xl font-semibold mb-2">Faculty Login & Dashboard</h3>
+        <p>Faculty members log in securely and access their personalized dashboard to manage attendance, activities, and performance data.</p>
+      </div>
+      <!-- Step 2 -->
+      <div class="bg-gray-100 p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+        <div class="text-5xl text-accent mb-4"><i class="fas fa-chart-line"></i></div>
+        <h3 class="text-xl font-semibold mb-2">Performance Tracking</h3>
+        <p>FaculTrack collects and analyzes data like lectures delivered, projects guided, and research work to evaluate faculty performance.</p>
+      </div>
+      <!-- Step 3 -->
+      <div class="bg-gray-100 p-6 rounded-lg shadow-md hover:shadow-lg transition duration-300">
+        <div class="text-5xl text-accent mb-4"><i class="fas fa-award"></i></div>
+        <h3 class="text-xl font-semibold mb-2">Reporting & Feedback</h3>
+        <p>Admins and stakeholders receive automated reports and actionable insights to recognize excellence and support faculty development.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Download User Manual Section -->
+<section class="download-manual bg-[#264653] text-white py-16 px-6">
+  <div class="max-w-4xl mx-auto text-center">
+    <h2 class="text-3xl font-semibold mb-6">Need Help Getting Started?</h2>
+    <p class="mb-8 text-lg">Download the FaculTrack User Manual for step-by-step instructions and tips to make the most out of the platform.</p>
+    <a href="/files/FaculTrack_User_Manual.pdf" download 
+       class="inline-block bg-[#2A9D8F] text-white font-semibold px-6 py-3 rounded-md hover:bg-[#F6BE00] transition">
+      📘 Download User Manual (PDF)
+    </a>
+  </div>
+</section>
+
+
+  <!-- Team Section -->
+  <section class="team-section bg-gray-100 py-16 text-center">
+    <h2 class="text-3xl font-semibold mb-10">Meet Our Team</h2>
+    <div class="flex flex-wrap justify-center gap-10">
+      <div class="team-member w-60">
+        <a href="http://linkedin.com/in/alfiya-banu-mohammed-arif-a065452ab" target="_blank">
+          <img src="/images/alfiy.jpg" alt="Alfiya Banu Mohammed Arif" class="w-32 h-32 mx-auto rounded-full border-4 border-primary shadow-md mb-4">
+        </a>
+        <h4 class="text-xl font-semibold">Alfiya Banu Mohammed Arif</h4>
+      </div>
+      <div class="team-member w-60">
+        <a href="http://www.linkedin.com/in/apoorva-bhat-87ab952ab" target="_blank">
+          <img src="/images/apoorva.jpg" alt="Apoorva Bhatt B.R" class="w-32 h-32 mx-auto rounded-full border-4 border-primary shadow-md mb-4">
+        </a>
+        <h4 class="text-xl font-semibold">Apoorva Bhatt B.R</h4>
+      </div>
+      <div class="team-member w-60">
+        <a href="https://www.linkedin.com/in/ashmitha-d-kotian-3a53a7259/" target="_blank">
+          <img src="/images/ash.jpg" alt="Ashmitha D Kotian" class="w-32 h-32 mx-auto rounded-full border-4 border-primary shadow-md mb-4">
+        </a>
+        <h4 class="text-xl font-semibold">Ashmitha D Kotian</h4>
+      </div>
+      <div class="team-member w-60">
+        <a href="https://www.linkedin.com/in/ananya-naik-0934a82a7?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
+          <img src="/images/ananya.jpg" alt="Ananya Naik" class="w-32 h-32 mx-auto rounded-full border-4 border-primary shadow-md mb-4">
+        </a>
+        <h4 class="text-xl font-semibold">Ananya Naik</h4>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-primary text-white text-center py-4">
+    <p class="font-semibold">&copy; 2025 <span class="italic font-bold">FaculTrack</span>. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Hamburger Menu Script -->
+  <script>
+    function toggleMenu() {
+      const dropdown = document.getElementById("dropdown");
+      dropdown.classList.toggle("hidden");
+    }
+  </script>
+</body>
+</html>

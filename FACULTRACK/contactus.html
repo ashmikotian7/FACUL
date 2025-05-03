@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Us - FaculTrack</title>
+    <link rel="icon" type="image/png" href="/images/white.png" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: '#264653',
+              accent: '#2A9D8F',
+              background: '#F0F4F8',
+              'text-main': '#1F2937',
+              highlight: '#E9C46A',
+            },
+            fontFamily: {
+              heading: ['Poppins', 'sans-serif'],
+              body: ['Open Sans', 'sans-serif'],
+            },
+          },
+        },
+      };
+    </script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+  </head>
+
+  <body class="font-body bg-gradient-to-br from-background via-primary to-background text-text-main min-h-screen flex flex-col">
+    <!-- Header with Custom Hamburger Menu -->
+    <header class="bg-primary text-white px-5 py-4 flex justify-between items-center">
+      <div class="flex items-center gap-2">
+        <img src="/images/white.png" alt="FaculTrack Logo" class="w-14" />
+        <h2 class="text-2xl font-heading font-semibold">FaculTrack</h2>
+      </div>
+
+      <!-- Hamburger -->
+      <div class="relative">
+        <div id="hamburger" class="flex flex-col justify-between w-7 h-6 cursor-pointer" onclick="toggleMenu()">
+          <div class="h-1 bg-white rounded"></div>
+          <div class="h-1 bg-white rounded"></div>
+          <div class="h-1 bg-white rounded"></div>
+        </div>
+        <!-- Dropdown Menu -->
+        <div id="dropdown" class="absolute right-0 mt-2 bg-gray-800 text-white rounded-md shadow-lg hidden z-50 w-40">
+          <a href="/index.html" class="block px-4 py-2 hover:bg-gray-700">Home</a>
+          <a href="/faculty/faclogin.php" class="block px-4 py-2 hover:bg-gray-700">FacLogin</a>
+          <a href="/admin/adminlog.php" class="block px-4 py-2 hover:bg-gray-700">AdminLogin</a>
+          <a href="/aboutus.html" class="block px-4 py-2 hover:bg-gray-700">About Us</a>
+          <a href="/contactus.html" class="block px-4 py-2 hover:bg-gray-700">Contact Us</a>
+        </div>
+      </div>
+    </header>
+    <br>
+    <br>
+
+    <!-- Contact Section -->
+    <section class="flex flex-col md:flex-row justify-between items-start p-10 md:p-20 gap-12 flex-grow">
+      <!-- Left -->
+      <div class="md:w-1/2 space-y-6">
+        <h2 class="text-4xl font-heading font-bold leading-snug">
+          Let’s chat.<br />Tell us about Our project.
+        </h2>
+        <p class="text-lg">Let’s create something amazing together 👋</p>
+        <p class="text-sm text-white bg-accent px-4 py-2 inline-block rounded-md">
+          We usually reply within 24 hours!
+        </p>
+      </div>
+
+      <!-- Right: Contact Form -->
+      <div class="md:w-1/2 bg-white rounded-xl shadow-md p-6">
+        <h3 class="text-xl font-semibold mb-4">Send us a message 🚀</h3>
+        <form action="https://api.web3forms.com/submit" method="POST" class="space-y-3">
+          <input type="hidden" name="access_key" value="9751b6a2-f8dd-4c84-8849-89fdf34d83a6" />
+
+          <input
+            type="text"
+            name="name"
+            placeholder="Full name*"
+            required
+            class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-accent"
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email address*"
+            required
+            class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-accent"
+          />
+          
+          <textarea
+            name="message"
+            placeholder="Tell us about your project*"
+            rows="4"
+            required
+            class="w-full border border-gray-300 rounded-md px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-accent"
+          ></textarea>
+
+          <button
+            type="submit"
+            class="bg-accent text-white text-sm font-medium px-4 py-2 rounded-md hover:bg-highlight transition-all"
+          >
+            Send Message
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white text-center py-4 mt-10">
+      <p class="font-semibold">
+        &copy; 2025 <span class="italic font-bold">FaculTrack</span>. All Rights Reserved.
+      </p>
+      <p>Made with <i class="fas fa-heart text-red-500 animate-pulse"></i> by the FaculTrack Team.</p>
+    </footer>
+
+    <!-- Hamburger Menu Script -->
+    <script>
+      function toggleMenu() {
+        const dropdown = document.getElementById("dropdown");
+        dropdown.classList.toggle("hidden");
+      }
+    </script>
+  </body>
+</html>

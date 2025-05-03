@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FaculTrack - Track Your Academic Success</title>
+  <link rel="icon" type="image/png" href="/images/white.png" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#264653',
+            accent: '#2A9D8F',
+            background: '#F0F4F8',
+            'text-main': '#1F2937',
+            highlight: '#E9C46A',
+          },
+          fontFamily: {
+            heading: ['"Poppins"', 'sans-serif'],
+            body: ['"Open Sans"', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Poppins:wght@700&display=swap" rel="stylesheet">
+</head>
+
+<body class="font-body bg-gradient-to-br from-background via-primary to-background text-text-main m-0 p-0">
+
+  <!-- Header with navigation -->
+  <header class="flex items-center bg-primary text-white px-5 py-3">
+    <div class="flex items-center gap-2">
+      <img src="/images/white.png" alt="SMVITM LOGO" class="w-16" />
+      <h2 class="text-2xl font-semibold font-heading">FaculTrack</h2>
+    </div>
+    <nav class="ml-auto flex gap-6 items-center font-bold">
+      <a href="/index.html" class="hover:text-highlight">Home</a>
+      <a href="faculty/faclogin.php" class="hover:text-highlight">FacLogin</a>
+      <a href="admin/adminlog.php" class="hover:text-highlight">AdminLogin</a>
+      <a href="/aboutus.html" class="hover:text-highlight">AboutUs</a>
+      <a href="/contactus.html" class="hover:text-highlight">ContactUs</a>
+    </nav>
+  </header>
+
+  <!-- Banner Section -->
+  <section id="home" class="bg-cover bg-center bg-no-repeat text-center py-40 px-10" style="background-image: url('images/sn.jpg');">
+    <div class="bg-black/50 backdrop-blur-md text-white p-8 rounded-xl w-full md:w-2/3 lg:w-1/2 mx-auto shadow-2xl">
+      <h2 class="text-4xl font-heading font-bold mb-4">Welcome to SMVITM FaculTrack</h2>
+      <p class="text-lg font-medium">Empowering educators, enriching academics, and embracing success—track your journey with SMVITM FaculTrack.</p>
+    </div>
+  </section>
+
+  <!-- Buttons Section -->
+  <section class="text-center my-8">
+    <h3 class="text-2xl font-heading font-semibold mb-4">Explore Rankings</h3>
+    <div class="flex flex-col sm:flex-row justify-center gap-6">
+      <a href="/leaderboard.php" class="bg-accent hover:bg-highlight text-white font-semibold py-3 px-6 rounded-full shadow-md transition duration-300">
+        🏆 View Leaderboard
+      </a>
+      <a href="/leadergraph.php" class="bg-accent hover:bg-highlight text-white font-semibold py-3 px-6 rounded-full shadow-md transition duration-300">
+        📊 Leaderboard Graph
+      </a>
+    </div>
+  </section>
+
+  <!-- Video and Contact Information Section -->
+  <div class="flex flex-col lg:flex-row justify-between items-start m-5 p-5 gap-6">
+    <div class="w-full lg:w-1/2">
+      <video autoplay muted loop class="w-full rounded-xl shadow-lg">
+        <source src="/images/sm.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+
+    <div class="w-full lg:w-1/2 text-lg space-y-4 font-medium">
+      <p><strong class="text-highlight">📍 Address:</strong><br />Shri Madhwa Vadiraja Institute of Technology & Management, Vishwothama Nagar, Bantakal, Udupi - 574115, Karnataka, India.</p>
+      <p><strong class="text-highlight">🌐 Website:</strong> <a href="https://sode-edu.in/" target="_blank" class="text-accent underline hover:text-highlight">https://sode-edu.in/</a></p>
+      <p><strong class="text-highlight">📧 Email:</strong> <a href="mailto:info@sode-edu.in" class="text-accent hover:text-highlight">info@sode-edu.in</a></p>
+      <p><strong class="text-highlight">📞 Phone:</strong> +91-820-2589182 / +91-820-2589183</p>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="bg-primary text-white text-center py-3 mt-10 rounded-t-xl shadow-inner">
+    <p class="font-semibold">&copy; 2025 FaculTrack - All Rights Reserved.</p>
+  </footer>
+</body>
+</html>
