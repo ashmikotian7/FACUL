@@ -3,6 +3,7 @@ session_start();
 
 $login_error = "";
 $signup_msg = "";
+$signup_success = false;
 
 if (file_exists('db.php')) {
     include 'db.php';
@@ -49,18 +50,31 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action']) && $_POST['a
     if (!str_ends_with($email, "@sode-edu.in")) {
         $signup_msg = "This platform is only for @sode-edu.in email addresses.";
     } else {
-        $sql = "INSERT INTO faculty (facultyID, name, email, password, birthdate, department, grade, allowance, drive_link, total_score) 
-                VALUES (?, ?, ?, ?, ?, ?, '', 0, '', 0)";
-        $stmt = $conn->prepare($sql);
-        $stmt->bind_param("ssssss", $facultyID, $name, $email, $password, $birthdate, $department);
+        $check_sql = "SELECT * FROM faculty WHERE facultyID = ? OR email = ?";
+        $check_stmt = $conn->prepare($check_sql);
+        $check_stmt->bind_param("ss", $facultyID, $email);
+        $check_stmt->execute();
+        $check_result = $check_stmt->get_result();
 
-        if ($stmt->execute()) {
-            $signup_msg = "Signup successful! You can now login.";
+        if ($check_result->num_rows > 0) {
+            $signup_msg = "Faculty ID or Email already exists.";
         } else {
-            $signup_msg = "Error: " . $stmt->error;
+            $sql = "INSERT INTO faculty (facultyID, name, email, password, birthdate, department, grade, allowance, drive_link, total_score) 
+                    VALUES (?, ?, ?, ?, ?, ?, '', 0, '', 0)";
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("ssssss", $facultyID, $name, $email, $password, $birthdate, $department);
+
+            if ($stmt->execute()) {
+                $signup_msg = "Signup successful! You can now login.";
+                $signup_success = true;
+            } else {
+                $signup_msg = "Error: " . $stmt->error;
+            }
+
+            $stmt->close();
         }
 
-        $stmt->close();
+        $check_stmt->close();
     }
 }
 
@@ -73,6 +87,7 @@ if (isset($conn)) {
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <link rel="icon" type="image/png" href="/images/white.png">
   <title>FaculTrack - Login / Signup</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <script src="https://cdn.tailwindcss.com"></script>
@@ -179,20 +194,17 @@ if (isset($conn)) {
             <input type="email" name="email" placeholder="Email (must be @sode-edu.in)" required class="w-full border p-2 rounded">
             <input type="password" name="password" placeholder="Password" required class="w-full border p-2 rounded">
             <input type="date" name="birthdate" required class="w-full border p-2 rounded">
-
-            <!-- Department Dropdown -->
             <select name="department" required class="w-full border p-2 rounded">
               <option value="" disabled selected>Select Department</option>
               <option value="Mathematics">Mathematics</option>
-              <option value="Mathematics">Physics</option>
-              <option value="Mathematics">Chemistry</option>
+              <option value="Physics">Physics</option>
+              <option value="Chemistry">Chemistry</option>
               <option value="Computer Science">Computer Science Engineering</option>
-              <option value="Artificial Intelligence and Data Science">Artificial Intelligence  Data Science </option>
+              <option value="Artificial Intelligence and Data Science">Artificial Intelligence  Data Science</option>
               <option value="Artificial Intelligence and Machine Learning">Artificial Intelligence & Machine Learning</option>
               <option value="Mechanical Engineering">Mechanical Engineering</option>
               <option value="Electronics and Communication">Electronics and Communication Engineering</option>
             </select>
-
             <button type="submit" class="w-full bg-accent text-white py-2 rounded hover:bg-primary">Signup</button>
           </form>
         </div>
@@ -226,7 +238,12 @@ if (isset($conn)) {
       dropdown.classList.toggle("hidden");
     }
 
-    showForm('login');
+    // Auto-switch to login only if signup was successful
+    <?php if ($signup_success): ?>
+      showForm('login');
+    <?php else: ?>
+      showForm('signup');
+    <?php endif; ?>
   </script>
 </body>
 </html>
