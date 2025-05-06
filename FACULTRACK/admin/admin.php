@@ -15,6 +15,9 @@
     summary {
       cursor: pointer;
     }
+    input[type="text"]::placeholder {
+      color: #888;
+    }
   </style>
 </head>
 <body style="background: linear-gradient(to bottom right, #F0F4F8, #264653, #F0F4F8);" class="min-h-screen text-gray-800">
@@ -35,7 +38,7 @@
       <?php
       include 'db.php';
 
-      $sql = "SELECT year, id, facultyID, name, grade, allowance, total_score, department, drive_link 
+      $sql = "SELECT year, facultyID, name, grade, allowance, total_score, department, drive_link 
               FROM faculty 
               ORDER BY year DESC, name ASC";
       $result = $conn->query($sql);
@@ -48,13 +51,19 @@
           }
 
           foreach ($facultyByYear as $year => $facultyList) {
+              $tableId = "table_$year";
+              $inputId = "search_$year";
               echo "<details class='mb-4 border border-gray-300 rounded-md p-4'>
                       <summary class='text-xl font-semibold text-[#264653]'>Year: $year</summary>
-                      <div class='mt-4 overflow-x-auto'>
-                        <table class='min-w-full text-sm text-center border'>
+                      <div class='mt-4 mb-2 flex justify-end'>
+                        <input type='text' id='$inputId' onkeyup=\"filterDepartment('$inputId', '$tableId')\" 
+                               placeholder='Search by department...' 
+                               class='w-full md:w-1/3 px-4 py-2 border rounded-md focus:outline-none focus:ring-2 focus:ring-[#2A9D8F]' />
+                      </div>
+                      <div class='overflow-x-auto'>
+                        <table id='$tableId' class='min-w-full text-sm text-center border'>
                           <thead class='bg-gray-100 text-gray-700'>
                             <tr>
-                              <th class='px-4 py-2'>ID</th>
                               <th class='px-4 py-2'>Faculty ID</th>
                               <th class='px-4 py-2'>Name</th>
                               <th class='px-4 py-2'>Grade</th>
@@ -67,7 +76,6 @@
                           <tbody class='bg-white'>";
               foreach ($facultyList as $row) {
                   echo "<tr class='hover:bg-gray-100 transition'>
-                          <td class='px-4 py-2'>" . $row["id"] . "</td>
                           <td class='px-4 py-2'>" . $row["facultyID"] . "</td>
                           <td class='px-4 py-2'>" . $row["name"] . "</td>
                           <td class='px-4 py-2'>" . $row["grade"] . "</td>
@@ -90,5 +98,21 @@
       ?>
     </div>
   </div>
+
+  <script>
+    function filterDepartment(inputId, tableId) {
+      const input = document.getElementById(inputId).value.toLowerCase();
+      const table = document.getElementById(tableId);
+      const rows = table.getElementsByTagName("tr");
+
+      for (let i = 1; i < rows.length; i++) {
+        const deptCell = rows[i].getElementsByTagName("td")[5];
+        if (deptCell) {
+          const deptText = deptCell.textContent.toLowerCase();
+          rows[i].style.display = deptText.includes(input) ? "" : "none";
+        }
+      }
+    }
+  </script>
 </body>
 </html>
