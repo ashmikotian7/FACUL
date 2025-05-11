@@ -51,8 +51,8 @@
         die("Connection failed: " . $conn->connect_error);
       }
 
-      // Get distinct years
-      $yearQuery = "SELECT DISTINCT year FROM faculty ORDER BY year DESC";
+      // Get distinct years excluding 0
+      $yearQuery = "SELECT DISTINCT year FROM faculty WHERE year != 0 ORDER BY year DESC";
       $yearResult = $conn->query($yearQuery);
 
       $years = [];
@@ -122,7 +122,7 @@
 
   <!-- Footer -->
   <footer class="bg-primary text-white text-center py-3 mt-10 rounded-t-xl shadow-inner">
-    <p class="font-semibold">&copy; 2024 FaculTrack - All Rights Reserved.</p>
+    <p class="font-semibold">&copy; 2025 FaculTrack - All Rights Reserved.</p>
   </footer>
 
   <!-- Dropdown Filter Script -->

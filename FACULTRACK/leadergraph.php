@@ -54,7 +54,7 @@
           $conn = new mysqli("localhost", "root", "", "facultrack");
           if ($conn->connect_error) die("Connection failed: " . $conn->connect_error);
 
-          $yearQuery = "SELECT DISTINCT year FROM faculty ORDER BY year DESC";
+          $yearQuery = "SELECT DISTINCT year FROM faculty WHERE year != 0 ORDER BY year DESC";
           $yearResult = $conn->query($yearQuery);
           $selectedYear = isset($_GET['year']) ? intval($_GET['year']) : date("Y");
 
@@ -199,7 +199,7 @@
 
   <!-- Footer -->
   <footer class="bg-primary text-white text-center py-3 mt-10 rounded-t-xl shadow-inner">
-    <p class="font-semibold">&copy; 2024 FaculTrack - All Rights Reserved.</p>
+    <p class="font-semibold">&copy; 2025 FaculTrack - All Rights Reserved.</p>
   </footer>
 
 </body>
